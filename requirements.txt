@@ -158,13 +158,10 @@ jsonpointer==2.1
 jsonschema  
 jupyter  
 jupyter-console  
-jupyter-events  
-jupyter-server  
+jupyter-events   
 jupyter-ydoc  
 jupyter_client  
 jupyter_core  
-jupyter_server_
-jupyter_server_ydoc  
 jupyterlab  
 jupyterlab-pygments  
 jupyterlab-widgets  
