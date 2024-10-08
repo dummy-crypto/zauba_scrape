@@ -22,7 +22,7 @@ catalogue==2.0.10
 
 cloudpathlib==0.18.1
 
-clyent==1.2.2
+clyent==1.2.1
 
 conda-repo-cli==1.0.75
 
