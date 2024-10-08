@@ -146,7 +146,7 @@ srsly==2.4.8
 
 streamlit==1.36.0
 
-TBB==0.2
+TBB==2021.13.1
 
 tensorboard==2.16.2
 tensorboard-data-server==0.7.2
