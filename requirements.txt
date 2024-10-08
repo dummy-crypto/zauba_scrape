@@ -375,7 +375,6 @@ tensorboard==2.16.2
 tensorboard-data-server==0.7.2
 tensorflow==2.16.1
 tensorflow-intel==2.16.1
-tensorflow-io-gcs-
 termcolor==2.4.0
 terminado  
 text-unidecode  
