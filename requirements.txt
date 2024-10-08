@@ -23,7 +23,7 @@ catalogue==2.0.10
 cloudpathlib==0.18.1
 
 clyent==1.2.1
-conda-verify==3.4.2
+
 confection==0.1.5
 constantly==15.1.0
 
