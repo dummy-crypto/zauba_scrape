@@ -36,13 +36,13 @@ column_names = [
 ]
 
 # Read the CSV with custom headers
-df = pd.read_csv(
-    r"C:\Users\LTIM_10700357\Desktop\details.csv", 
-    delimiter='\t', 
-    header=None, 
-    names=column_names, 
-    on_bad_lines='skip'
-)
+df = pd.read_csv('details.csv')
+    #r"C:\Users\LTIM_10700357\Desktop\details.csv", 
+    #delimiter='\t', 
+    #header=None, 
+    #names=column_names, 
+    #on_bad_lines='skip'
+#)
 
 # Replace the URLs
 df['Website'] = df['Website'].str.replace(
