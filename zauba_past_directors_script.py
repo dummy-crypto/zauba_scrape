@@ -149,7 +149,7 @@ if not login_success:
 # Process each URL after logging in
 director_data = []
 
-for url in df['Website'][0:10000]:
+for url in df['Website'][0:5000]:
     try:
         time.sleep(1)
         driver.get(url)
