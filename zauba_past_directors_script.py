@@ -45,9 +45,9 @@ df = pd.read_csv('Website_zauba_10000.csv',delimiter='\t',header=None,names=colu
 #)
 
 # Replace the URLs
-df['Website'] = df['Website'].str.replace(
-    r'/company/', '/company-directors/', regex=False
-)
+#df['Website'] = df['Website'].str.replace(
+ #   r'/company/', '/company-directors/', regex=False
+#)
 
 
 # In[7]:
