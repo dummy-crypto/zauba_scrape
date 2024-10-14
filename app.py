@@ -4,10 +4,15 @@ from sqlalchemy import create_engine
 import os
 
 app = Flask(__name__)
-
+# Database configuration
+DB_USER = 'SAL_USER01'        # Replace with your SQL Server username
+DB_PASSWORD = 'Sal@123'     # Replace with your SQL Server password
+DB_SERVER = '172.16.22.25'           # Replace with your SQL Server address
+DB_PORT = '1433'                  # Default SQL Server port
+DB_NAME = 'SAL_DB'         # Replace with your SQL Server database name
 
 # Create the database engine
-connection_string = create_engine('mssql+pyodbc://SAL_USER01:%s@172.16.22.25:1433/SAL_DB?driver=ODBC+Driver+17+for+SQL+Server' % quote('Sal@123'))
+connection_string = f'mssql+pyodbc://{DB_USER}:{DB_PASSWORD}@{DB_SERVER}:{DB_PORT}/{DB_NAME}?driver=ODBC+Driver+17+for+SQL+Server'
 engine = create_engine(connection_string)
 
 @app.route('/save-data', methods=['GET'])
