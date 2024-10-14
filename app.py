@@ -1,6 +1,7 @@
 from flask import Flask, Response
 import pandas as pd
 import io
+import os
 
 app = Flask(__name__)
 
@@ -24,5 +25,5 @@ def download_csv():
         headers={"Content-disposition": "attachment; filename=data.csv"}
     )
 
-if __name__ == '__main__':
-    app.run()
+# No need for if __name__ block when using Render
+app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
