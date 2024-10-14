@@ -154,8 +154,8 @@ for url in df['Website'][0:100]:
         time.sleep(1)
         driver.get(url)
         url_parts = url.split('/')
-        company_name = url_parts[-2]
-        cin = url_parts[-1]
+        company_name = url_parts[-2].encode('utf-8').decode('utf-8')
+        cin = url_parts[-1].encode('utf-8').decode('utf-8')
         past_directors_section = WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "//h3[contains(text(), 'Past Directors')]"))
         )
@@ -172,10 +172,10 @@ for url in df['Website'][0:100]:
 
             director_data.append({
                 'DIN': din,
-                'Name': name,
-                'Designation': designation,
-                'Start Date': start_date,
-                'End Date': end_date,
+                'Name': name.encode('utf-8').decode('utf-8') if name else None,
+                'Designation': designation.encode('utf-8').decode('utf-8') if designation else None,
+                'Start Date': start_date.encode('utf-8').decode('utf-8') if start_date else None,
+                'End Date': end_date.encode('utf-8').decode('utf-8') if end_date else None,
                 'CIN': cin,
                 'Company_Name': company_name
             })
