@@ -21,6 +21,7 @@ import re
 import sqlalchemy
 from urllib.parse import quote
 from selenium.common.exceptions import TimeoutException, WebDriverException
+import pyodbc
 
 
 # In[6]:
