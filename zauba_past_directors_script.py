@@ -38,7 +38,7 @@ column_names = [
 ]
 
 # Read the CSV with custom headers
-df = pd.read_csv('Website_zauba_10000.csv',delimiter='\t',header=None,names=column_names,on_bad_lines='skip')
+df = pd.read_csv('Zauba_websites_10.csv',delimiter='\t',header=None,names=column_names,on_bad_lines='skip')
     #r"C:\Users\LTIM_10700357\Desktop\details.csv", 
     #delimiter='\t', 
     #header=None, 
