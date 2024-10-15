@@ -99,6 +99,7 @@ def create_driver():
     chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
     chrome_options.add_argument("--enable-logging")
     chrome_options.add_argument("--v=1")
+    chrome_options.binary_location = "/usr/bin/google-chrome" 
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
    
