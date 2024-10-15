@@ -191,9 +191,17 @@ final = pd.DataFrame(director_data)
 # Close the driver
 driver.quit()
 
-# Insert data into SQL database
-final.to_sql(f'zauba_past_director', engine, if_exists='append', index=False)
-print('Data Inserted in DB')
+try:
+    # Insert data into the SQL database
+    final.to_sql('zauba_past_director', engine, if_exists='append', index=False)
+    print('Data inserted into DB successfully.')
+except Exception as e:
+    log_error(f"Error inserting data into DB: {e}")
+
+
+# # Insert data into SQL database
+# final.to_sql(f'zauba_past_director', engine, if_exists='append', index=False)
+# print('Data Inserted in DB')
 
 
 # In[ ]:
