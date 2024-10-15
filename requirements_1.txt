@@ -1,0 +1,8 @@
+SQLAlchemy==1.4
+selenium==4.24.0
+pyodbc==5.1.0
+tqdm==4.66.4
+pandas==1.5.3
+PyExecJS==1.5.1
+numpy==1.23.2
+Werkzeug==2.0.1
