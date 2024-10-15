@@ -24,6 +24,7 @@ from selenium.common.exceptions import TimeoutException, WebDriverException
 import pyodbc
 
 
+
 # In[6]:
 
 
@@ -85,12 +86,20 @@ def log_error(error_message):
         f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {error_message}\n")
 
 def create_driver():
-    chrome_options = Options()
-    # Uncomment the following line to run in headless mode
+    # chrome_options = Options()
+    # # Uncomment the following line to run in headless mode
     # chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--enable-logging")
+    # chrome_options.add_argument("--v=1")
+    # return webdriver.Chrome(options=chrome_options)
+
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Run in headless mode
+    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
     chrome_options.add_argument("--enable-logging")
     chrome_options.add_argument("--v=1")
-    return webdriver.Chrome(options=chrome_options)
+    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
    
         
