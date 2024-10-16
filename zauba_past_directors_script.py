@@ -33,7 +33,7 @@ def create_driver():
     chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
     #chrome_options.add_argument("--enable-logging")
     #chrome_options.add_argument("--v=1")
-    chrome_options.binary_location = "C:\Program Files\Google\Chrome\Application"  # Ensure correct Chrome binary location
+    chrome_options.binary_location = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"  # Ensure correct Chrome binary location
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
 # Function to log in to Zaubacorp
