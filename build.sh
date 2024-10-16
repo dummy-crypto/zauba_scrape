@@ -1,17 +1,20 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+#!/bin/bash
 
-chrome_options = Options()
-chrome_options.add_argument("--headless")  # Run in headless mode
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
+# Install Google Chrome
+echo "Installing Google Chrome..."
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb -y
 
-# Set Chrome binary location
-chrome_options.binary_location = "/usr/bin/google-chrome"
+# Install ChromeDriver (matching the Chrome version)
+echo "Installing ChromeDriver..."
+CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+wget https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+sudo mv chromedriver /usr/local/bin/
+sudo chmod +x /usr/local/bin/chromedriver
 
-# Set ChromeDriver location
-service = Service("/usr/local/bin/chromedriver")
+# Install Python dependencies (if using pip)
+echo "Installing Python dependencies..."
+pip install -r requirements.txt
 
-# Initialize WebDriver
-driver = webdriver.Chrome(service=service, options=chrome_options)
+echo "Build script completed successfully."
