@@ -1,81 +1,22 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
-
-
 from tqdm import tqdm
 import pandas as pd
 from sqlalchemy import create_engine
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from tqdm import tqdm
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, WebDriverException
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import re
-import sqlalchemy
 from urllib.parse import quote
-from selenium.common.exceptions import TimeoutException, WebDriverException
 import pyodbc
-
-
-
-# In[6]:
-
-
-column_names = [
-    'Index', 
-    'Company_ID', 
-    'Company_Name', 
-    'Location', 
-    'Status', 
-    'Website'
-]
-
-# Read the CSV with custom headers
-df = pd.read_csv('Zauba_websites_10.csv',delimiter='\t',header=None,names=column_names,on_bad_lines='skip')
-    #r"C:\Users\LTIM_10700357\Desktop\details.csv", 
-    #delimiter='\t', 
-    #header=None, 
-    #names=column_names, 
-    #on_bad_lines='skip'
-#)
-
-# Replace the URLs
-#df['Website'] = df['Website'].str.replace(
- #   r'/company/', '/company-directors/', regex=False
-#)
-
-
-# In[7]:
-
-
-# chrome_options = Options()
-# chrome_options.add_argument("--headless")
-# driver = webdriver.Chrome()
-# chrome_options.add_argument("--no-sandbox")  
-# chrome_options.add_argument("--disable-dev-shm-usage")
-
-
-# In[ ]:
-
-
-import pandas as pd
 import sqlalchemy
-from sqlalchemy import create_engine
-from urllib.parse import quote
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import WebDriverException, TimeoutException
-import time
-import re
 
 # Define your database engine
 engine = create_engine('mssql+pyodbc://SAL_USER01:%s@172.16.22.25:1433/SAL_DB?driver=ODBC+Driver+17+for+SQL+Server' % quote('Sal@123'))
@@ -86,25 +27,15 @@ def log_error(error_message):
         f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {error_message}\n")
 
 def create_driver():
-    # chrome_options = Options()
-    # # Uncomment the following line to run in headless mode
-    # chrome_options.add_argument("--headless")
-    # chrome_options.add_argument("--enable-logging")
-    # chrome_options.add_argument("--v=1")
-    # return webdriver.Chrome(options=chrome_options)
-
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # Run in headless mode
     chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
     chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
     chrome_options.add_argument("--enable-logging")
     chrome_options.add_argument("--v=1")
-    chrome_options.binary_location = "/usr/bin/google-chrome" 
+    chrome_options.binary_location = "/usr/bin/google-chrome"  # Ensure correct Chrome binary location
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-   
-        
-        
 # Function to log in to Zaubacorp
 def login_to_zaubacorp(driver, username, password):
     try:
@@ -207,15 +138,3 @@ try:
     print('Data inserted into DB successfully.')
 except Exception as e:
     log_error(f"Error inserting data into DB: {e}")
-
-
-# # Insert data into SQL database
-# final.to_sql(f'zauba_past_director', engine, if_exists='append', index=False)
-# print('Data Inserted in DB')
-
-
-# In[ ]:
-
-
-
-
