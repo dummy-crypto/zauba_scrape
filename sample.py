@@ -1,18 +1,29 @@
+import os
 import pandas as pd
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
 # Step 1: Authenticate
 gauth = GoogleAuth()
-gauth.LoadClientConfigFile('client_secret.json')  
-gauth.LocalWebserverAuth()  # Creates a local webserver for authentication
+
+# Load the client secret from an environment variable or file
+client_secret = os.environ.get('CLIENT_SECRET_JSON')
+
+if client_secret:
+    with open('client_secret.json', 'w') as f:
+        f.write(client_secret)
+
+gauth.LoadClientConfigFile('client_secret.json')
+
+# Use command-line authentication
+gauth.CommandLineAuth()  # Change this line
 
 drive = GoogleDrive(gauth)
 
 # Step 2: Create a DataFrame
 df = pd.DataFrame({
-    'Column1': [1, 2, 3],
-    'Column2': ['A', 'B', 'C']
+    'Column1': [1, 2, 3,4,5,6,7],
+    'Column2': ['A', 'B', 'C','D','E','F','G']
 })
 
 # Step 3: Save the DataFrame as a CSV file locally
