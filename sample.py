@@ -4,7 +4,7 @@ from pydrive.drive import GoogleDrive
 
 # Step 1: Authenticate
 gauth = GoogleAuth()
-gauth.LoadClientConfigFile(r'C:\Users\pc\OneDrive\Desktop\client_secret.json')  
+gauth.LoadClientConfigFile('client_secret.json')  
 gauth.LocalWebserverAuth()  # Creates a local webserver for authentication
 
 drive = GoogleDrive(gauth)
