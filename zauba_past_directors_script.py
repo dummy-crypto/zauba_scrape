@@ -28,9 +28,9 @@ def log_error(error_message):
 
 def create_driver():
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run in headless mode
-    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
-    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+    # chrome_options.add_argument("--headless")  # Run in headless mode
+    # chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+    # chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
     #chrome_options.add_argument("--enable-logging")
     #chrome_options.add_argument("--v=1")
     chrome_options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Ensure correct Chrome binary location
